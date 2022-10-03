@@ -4,7 +4,7 @@ from transformers import CLIPProcessor, CLIPModel
 import torch
 import numpy as np
 
-import scripts.mmr as mmr
+import mmr
 
 
 # CLIP model
@@ -89,9 +89,11 @@ def concatenated_conditioning(prompt, model, batch_size, weights):
             sims = torch.nn.functional.cosine_similarity(
                 ngram_prompt_embeds, prompt_part.unsqueeze(0), dim=1
             )
+            # eliminate most docs just based on similarity with image_embed
+            # this is approximation to reduce compute during actual MMR calculation
             cand_indices = torch.sort(sims, descending=True)[1][:100].cpu()
             sorted_cand_indices = mmr.mmr_sorted(
-                set(cand_indices), None, 0.7, ngram_prompt_embeds, prompt_part
+                set(cand_indices), 0.7, ngram_prompt_embeds, prompt_part
             )
             selected_prompts = [all_prompts[i] for i in sorted_cand_indices]
             # combined_prompt += ' ' + combine_str_prompts(selected_prompts[:5])
