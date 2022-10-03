@@ -1,0 +1,5 @@
+**/*.ckpt
+sample_images/
+data/*.npy
+**/__pycache__/
+outputs/
