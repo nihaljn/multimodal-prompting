@@ -8,7 +8,7 @@ This repository presents yet another extension to the Stable Diffusion for image
 
 1. Clone this repository. We use a clone of the original [Stable Diffusion repository](https://github.com/CompVis/stable-diffusion/). Before proceeding to the next steps, make sure to follow the instructions to set up text-to-image generation inside the `stable-diffusion` folder by following the steps from their repository. Note that this includes downloading their model into the appropriate place inside `stable-diffusion` and installing the requirements of `stable-diffusion`.
 
-2. This repository ships with the n-gram prompts data inside `data`. Additionally, the preprocessed CLIP embeddings of these prompts need to be downloaded into `data` from [here]().
+2. This repository ships with the n-gram prompts data inside `data`. Additionally, the preprocessed CLIP embeddings of these prompts need to be downloaded into `data` from [here](https://drive.google.com/file/d/1yfudLHS7cDdixQ25xbQY55LohpB6Fl01/view?usp=sharing).
 
 3. Design a multimodal prompt by replacing images with `[img]` token. For example, the prompt in the figure above is input as `prompt="A tiger taking a walk on [img]`".
 
